@@ -18,7 +18,7 @@ Content-Type: application/json
   "firstName": "Alexander",
   "lastName": "Romero",
   "birthDate": "1990-03-14",
-  "email": "a.r@gmail.com",
+  "email": "1@gmail.com",
   "phone": "+57 311 201 8844",
   "address": "742 Calle siempre viva",
   "city": "Soledad"
@@ -26,17 +26,17 @@ Content-Type: application/json
 
 ### Update
 
-PUT {{local}}/customers/6a15064be2a53fd579a8a69b
+PUT {{local}}/customers/6a150f019d48eb04dca0070e
 Content-Type: application/json
 
 {
-  "firstName": "Alexander Updated",
-  "lastName": "Romero",
-  "birthDate": "1994-03-14",
-  "email": "aromero@gmail.com",
-  "phone": "+573117852345",
-  "address": "Conjunto Ceiba",
-  "city": "Soledad"
+  "firstName": "Zamira",
+  "lastName": "Cifuentes",
+  "birthDate": "1990-02-02",
+  "email": "1",
+  "phone": "+57300704188",
+  "address": "Ciudad Salitre",
+  "city": "Baq"
 }
 
 ### Delete customer

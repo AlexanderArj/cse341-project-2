@@ -5,10 +5,10 @@
     "description": "REST API for customers and invoices collections. No real data, this is a CSE 341 project",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "cse341-project-2-j8re.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {
@@ -74,8 +74,8 @@
           "201": {
             "description": "Created"
           },
-          "412": {
-            "description": "Precondition Failed"
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -158,9 +158,6 @@
           },
           "404": {
             "description": "Not Found"
-          },
-          "412": {
-            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -246,8 +243,8 @@
           "201": {
             "description": "Created"
           },
-          "412": {
-            "description": "Precondition Failed"
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -330,9 +327,6 @@
           },
           "404": {
             "description": "Not Found"
-          },
-          "412": {
-            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"

@@ -18,7 +18,7 @@ const saveCustomer = (req, res, next) => {
 
     if (!status) {
 
-      res.status(412).send({
+      res.status(400).send({
         success: false,
         message: 'Validation failed',
         data: err
@@ -52,7 +52,7 @@ const saveInvoice = (req, res, next) => {
 
     if (!status) {
 
-      res.status(412).send({
+      res.status(400).send({
         success: false,
         message: 'Validation failed',
         data: err
