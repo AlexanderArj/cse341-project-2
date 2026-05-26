@@ -1,0 +1,87 @@
+
+@local = http://localhost:8080
+
+### Get all customers
+
+GET {{local}}/customers
+
+### Get one specific customer
+
+GET {{local}}/customers/6a15064be2a53fd579a8a69b
+
+### Create customer
+
+POST {{local}}/customers
+Content-Type: application/json
+
+{
+  "firstName": "Alexander",
+  "lastName": "Romero",
+  "birthDate": "1990-03-14",
+  "email": "a.r@gmail.com",
+  "phone": "+57 311 201 8844",
+  "address": "742 Calle siempre viva",
+  "city": "Soledad"
+}
+
+### Update
+
+PUT {{local}}/customers/6a15064be2a53fd579a8a69b
+Content-Type: application/json
+
+{
+  "firstName": "Alexander Updated",
+  "lastName": "Romero",
+  "birthDate": "1994-03-14",
+  "email": "aromero@gmail.com",
+  "phone": "+573117852345",
+  "address": "Conjunto Ceiba",
+  "city": "Soledad"
+}
+
+### Delete customer
+
+DELETE {{local}}/customers/6a15064be2a53fd579a8a69b
+
+
+### Get all invoices
+
+GET {{local}}/invoices
+
+### Get one invoice
+
+GET {{local}}/invoices/6a150710e2a53fd579a8a69c
+
+### Create invoice
+
+POST {{local}}/invoices
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Gomez",
+  "birthDate": "1980-03-14",
+  "email": "jg@example.com",
+  "amount": 185.75,
+  "status": "paid",
+  "paymentDate": "2026-05-25"
+}
+
+### Update invoice
+
+PUT {{local}}/invoices/6a150710e2a53fd579a8a69c
+Content-Type: application/json
+
+{
+  "firstName": "Emily",
+  "lastName": "Johnson",
+  "birthDate": "1990-03-14",
+  "email": "updated.invoice@example.com",
+  "amount": 300.50,
+  "status": "paid",
+  "paymentDate": "26"
+}
+
+### Delete invoice
+
+DELETE {{local}}/invoices/6a150710e2a53fd579a8a69c
