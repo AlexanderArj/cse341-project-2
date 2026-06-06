@@ -5,10 +5,10 @@
     "description": "REST API for customers and invoices collections. No real data, this is a CSE 341 project",
     "version": "1.0.0"
   },
-  "host": "cse341-project-2-j8re.onrender.com",
+  "host": "localhost:8080",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/": {
