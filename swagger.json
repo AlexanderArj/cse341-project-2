@@ -2,14 +2,21 @@
   "swagger": "2.0",
   "info": {
     "title": "Customers and Invoices API",
-    "description": "REST API for customers and invoices collections. No real data, this is a CSE 341 project",
+    "description": "\n    REST API for customers and invoices collections, no real data. CSE 341 project\n\n    Authentication is handled through GitHub OAuth.\n\n    To authenticate:\n    1. Visit /login in a browser.\n    2. Complete GitHub authorization.\n    3. Return to the application.\n    4. Authenticated users may access protected routes.\n    ",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "cse341-project-2-j8re.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
+  "securityDefinitions": {
+    "githubAuth": {
+      "type": "oauth2",
+      "authorizationUrl": "/login",
+      "flow": "implicit"
+    }
+  },
   "paths": {
     "/": {
       "get": {
@@ -21,8 +28,29 @@
         }
       }
     },
+    "/profile": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Get current authenticated user",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
     "/customers/": {
       "get": {
+        "tags": [
+          "Customers"
+        ],
+        "summary": "Get all customers",
         "description": "",
         "produces": [
           "application/json"
@@ -37,6 +65,10 @@
         }
       },
       "post": {
+        "tags": [
+          "Customers"
+        ],
+        "summary": "Create customer",
         "description": "",
         "parameters": [
           {
@@ -77,6 +109,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -85,6 +120,10 @@
     },
     "/customers/{id}": {
       "get": {
+        "tags": [
+          "Customers"
+        ],
+        "summary": "Get customer by id",
         "description": "",
         "parameters": [
           {
@@ -110,6 +149,10 @@
         }
       },
       "put": {
+        "tags": [
+          "Customers"
+        ],
+        "summary": "Update customer",
         "description": "",
         "parameters": [
           {
@@ -156,6 +199,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -165,6 +211,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "Customers"
+        ],
+        "summary": "Delete customer",
         "description": "",
         "parameters": [
           {
@@ -180,6 +230,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "404": {
             "description": "Not Found"
@@ -192,6 +245,10 @@
     },
     "/invoices/": {
       "get": {
+        "tags": [
+          "Invoices"
+        ],
+        "summary": "Get all invoices",
         "description": "",
         "produces": [
           "application/json"
@@ -206,6 +263,10 @@
         }
       },
       "post": {
+        "tags": [
+          "Invoices"
+        ],
+        "summary": "Create invoice",
         "description": "",
         "parameters": [
           {
@@ -246,6 +307,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -254,6 +318,10 @@
     },
     "/invoices/{id}": {
       "get": {
+        "tags": [
+          "Invoices"
+        ],
+        "summary": "Get invoice by ID",
         "description": "",
         "parameters": [
           {
@@ -279,6 +347,10 @@
         }
       },
       "put": {
+        "tags": [
+          "Invoices"
+        ],
+        "summary": "Update invoice",
         "description": "",
         "parameters": [
           {
@@ -325,6 +397,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -334,6 +409,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "Invoices"
+        ],
+        "summary": "Delete invoice",
         "description": "",
         "parameters": [
           {
@@ -350,8 +429,31 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "All users",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"

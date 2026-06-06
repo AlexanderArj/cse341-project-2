@@ -6,12 +6,21 @@ const invoicesController = require('../controllers/invoices');
 const validation = require('../middleware/validate');
 const authenticate = require('../middleware/authenticate');
 
-router.get('/', invoicesController.getAll);
+router.get('/',
+   // #swagger.tags = ['Invoices']
+  // #swagger.summary = 'Get all invoices'
+  invoicesController.getAll);
 
-router.get('/:id', invoicesController.getSingle);
+router.get('/:id',
+  // #swagger.tags = ['Invoices']
+  // #swagger.summary = 'Get invoice by ID'
+
+  invoicesController.getSingle);
 
 router.post(
   '/',
+   // #swagger.tags = ['Invoices']
+  // #swagger.summary = 'Create invoice'
   authenticate,
   validation.saveInvoice,
   invoicesController.createInvoice
@@ -19,6 +28,8 @@ router.post(
 
 router.put(
   '/:id',
+   // #swagger.tags = ['Invoices']
+  // #swagger.summary = 'Update invoice'
   authenticate,
   validation.saveInvoice,
   invoicesController.updateInvoice
@@ -26,6 +37,8 @@ router.put(
 
 router.delete(
   '/:id',
+   // #swagger.tags = ['Invoices']
+  // #swagger.summary = 'Delete invoice'
   authenticate,
   invoicesController.deleteInvoice
 );

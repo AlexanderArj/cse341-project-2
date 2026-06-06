@@ -4,6 +4,7 @@ const passport = require('passport');
 const GitHubStrategy = require('passport-github').Strategy;
 const cors = require('cors');
 const mongodb = require('./db/connect');
+const usersModel = require('./models/users');
 
 require('dotenv').config();
 
@@ -39,18 +40,54 @@ passport.use(
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
       callbackURL: process.env.CALLBACK_URL
     },
-    (accessToken, refreshToken, profile, done) => {
-      return done(null, profile);
+    async (accessToken, refreshToken, profile, done) => {
+      try {
+        let user = await usersModel.findByGithubId(profile.id);
+
+        if (!user) {
+          const newUser = {
+            githubId: profile.id,
+            username: profile.username,
+            displayName: profile.displayName,
+            profileUrl: profile.profileUrl,
+            avatarUrl: profile.photos?.[0]?.value || null,
+            createdAt: new Date(),
+            lastLogin: new Date()
+          };
+
+          await usersModel.createUser(newUser);
+          user = await usersModel.findByGithubId(profile.id);
+        } else {
+          await usersModel.updateLastLogin(profile.id);
+        }
+
+        return done(null, user);
+      } catch (error) {
+        return done(error, null);
+      }
     }
   )
 );
 
+
 passport.serializeUser((user, done) => {
-  done(null, user);
+  done(null, user.githubId);
 });
 
-passport.deserializeUser((user, done) => {
-  done(null, user);
+passport.deserializeUser(async (githubId, done) => {
+
+  try {
+
+    const user = await usersModel.findByGithubId(githubId);
+
+    done(null, user);
+
+  } catch (error) {
+
+    done(error, null);
+
+  }
+
 });
 
 
